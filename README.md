@@ -1,8 +1,12 @@
 # responseapi-tutorial
 
 content:
-* lesson1.py: following turorial on page https://youtu.be/wBuULAoJxok?feature=shared
-* lesson2.py: following turorial on page https://youtu.be/XKp2YrJJhn0?feature=shared
+
+| lesson | following turorial | status |
+|-----------------|-----------------|-----------------|
+| lesson1.py  | https://youtu.be/wBuULAoJxok?feature=shared  | done |
+| lesson2.py  | https://youtu.be/XKp2YrJJhn0?feature=shared  | done |
+| lesson3.py  | https://youtu.be/1P5Yccy1rRk?feature=shared  | open |
 
 prerequisites:
 * venv is installed
