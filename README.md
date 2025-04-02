@@ -6,7 +6,7 @@ content:
 |-----------------|-----------------|-----------------|
 | lesson1.py  | https://youtu.be/wBuULAoJxok?feature=shared  | done |
 | lesson2.py  | https://youtu.be/XKp2YrJJhn0?feature=shared  | done |
-| lesson3.py  | https://youtu.be/1P5Yccy1rRk?feature=shared  | open |
+| lesson3.py  | https://youtu.be/1P5Yccy1rRk?feature=shared  | openin progress |
 
 prerequisites:
 * venv is installed
