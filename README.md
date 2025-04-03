@@ -2,11 +2,18 @@
 
 content:
 
-| lesson | following turorial | status |
+| lesson | file | following turorial | status |
 |-----------------|-----------------|-----------------|
-| lesson1.py  | https://youtu.be/wBuULAoJxok?feature=shared  | done |
-| lesson2.py  | https://youtu.be/XKp2YrJJhn0?feature=shared  | done |
-| lesson3.py  | https://youtu.be/1P5Yccy1rRk?feature=shared  | openin progress |
+| intro and setup | lesson1.py | https://youtu.be/wBuULAoJxok?feature=shared  | done |
+| analyze images | lesson2.py | https://youtu.be/XKp2YrJJhn0?feature=shared  | done |
+| chat history | lesson3.py | https://youtu.be/1P5Yccy1rRk?feature=shared  | openin progress |
+| structured output | lesson4.py | https://youtu.be/ROKU_Jqb1po?feature=shared  | open |
+| schemas with pydantic | lesson4-pydantic.py | https://youtu.be/3Z03fwH1I7s?feature=shared | open |
+| web access | lesson5.py | https://youtu.be/krsfRZcGleI?feature=shared  | open |
+| file search | lesson6.py | NA | obsolete |
+| file search | lesson7.py | https://youtu.be/K9B61x0qWeE?feature=shared | open |
+| add custom tools | lesson8.py | https://youtu.be/3eU9kA-qfmg?feature=shared | open |
+| computer use | lesson9.py | https://youtu.be/Tm1_KHdh_kA?feature=shared | open |
 
 prerequisites:
 * venv is installed
