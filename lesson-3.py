@@ -5,7 +5,9 @@ load_dotenv()
 client = OpenAI()
 
 def chat_loop():
-        
+
+    history = []
+      
     while True:
         # Get user input
         user_input = input("You: ")
@@ -13,11 +15,21 @@ def chat_loop():
         if user_input.lower() in ["exit", "bye", "quit"]:
             print("Goodbye!")
             break
+        
+        history.append({
+            "role": "user",
+            "content": user_input
+        })
 
         response = client.responses.create(
-            model="gpt-4o-mini", # LLM 
-            input=user_input, # pass several messages at once
+            model="gpt-4o-mini",
+            input=history,
         )
+
+        history.append({
+            "role": "assistant",
+            "content": response.output_text,
+        })
 
         print("Bot: ", response.output_text)
 
