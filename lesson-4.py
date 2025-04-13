@@ -12,36 +12,47 @@ client = OpenAI()
 #     "attendees": ["Alice", "Bob"]
 # }
 
-# JSON MODE
-
+# Structured Output mode
 input_messages = [
     {
         "role":"user",
-        "content": """
-        Alice and Bob are going to a science fair on friday."
-
-        The date schall be in the following format; YYYY/MM/DD
-
-        Respone with a JSON object with the following keys:
-        {
-            "name": "Name of event",
-            "date": "Date of event",
-            "location": "Location of event",
-            "attendees": ["Name of attendees"]
-        }
-        """
+        "content": "Alice and Bob are going to a science fair in New York on friday."
     }
 ]
 
 response = client.responses.create(
     model="gpt-4o-mini",
-    instructions="You are a helpful assistant.",
+    instructions="Extract the event information.",
     input=input_messages,
     text={
         "format": {
-            "type": "json_object"
+            "type": "json_schema",
+            "name": "calendar_event",
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "date": {
+                        "type": "string"
+                    },
+                    "location": {
+                        "type": "string"
+                    },
+                    "attendees": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "required": ["name", "date", "location", "attendees"],
+                "additionalProperties": False
+            },
+            "strict": True
         }
     }
-    )
+)
 
 print(response.output_text)
