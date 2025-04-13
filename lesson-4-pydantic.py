@@ -2,23 +2,31 @@ from openai import OpenAI
 from dotenv import load_dotenv
 load_dotenv()
 
-client = OpenAI()
+from pydantic import BaseModel, ConfigDict
+from typing import List
 
-# Expected output:
-# {
-#     "name": "Science fair",
-#     "date": "Friday",
-#     "location": "Science Museum",
-#     "attendees": ["Alice", "Bob"]
-# }
+# Create the Pydantic class
+class Event(BaseModel):
+    model_config = ConfigDict(extra="forbid")
 
-# Structured Output mode
+    name: str
+    date: str
+    location: str
+    attendees: List[str]
+
+schema = Event.model_json_schema()
+
+print(schema)
+
+# Initial messages
 input_messages = [
     {
         "role":"user",
         "content": "Alice and Bob are going to a science fair in New York on friday."
     }
 ]
+
+client = OpenAI()
 
 response = client.responses.create(
     model="gpt-4o-mini",
@@ -28,28 +36,7 @@ response = client.responses.create(
         "format": {
             "type": "json_schema",
             "name": "calendar_event",
-            "schema": {
-                "type": "object",
-                "properties": {
-                    "name": {
-                        "type": "string"
-                    },
-                    "date": {
-                        "type": "string"
-                    },
-                    "location": {
-                        "type": "string"
-                    },
-                    "attendees": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
-                    }
-                },
-                "required": ["name", "date", "location", "attendees"],
-                "additionalProperties": False
-            },
+            "schema": schema, 
             "strict": True
         }
     }
