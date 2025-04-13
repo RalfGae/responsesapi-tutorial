@@ -7,7 +7,7 @@ client = OpenAI()
 input_messages = [
     {
         "role":"user",
-        "content":"What is the current weather near me?"
+        "content":"What is the latest news from OpenAI?"
     }
 ]
 
@@ -30,4 +30,21 @@ response = client.responses.create(
     tools=tools
 )
 
-print(response.output_text)
+# print(response.model_dump_json(indent=4))
+
+print("AI Respone: ", response.output_text)
+
+print("\nCitations:")
+
+for block in response.output:
+    if not hasattr(block, 'content'):
+        continue
+
+    for content_item in block.content:
+        if not hasattr(content_item, 'annotations'):
+            continue
+
+        for annotation in content_item.annotations:
+            if annotation.type == "url_citation":
+                print(f"- {annotation.title}: {annotation.url}")
+

@@ -9,7 +9,7 @@ content:
 | chat history | lesson3.py | https://youtu.be/1P5Yccy1rRk?feature=shared | done |
 | structured output | lesson4.py | https://youtu.be/ROKU_Jqb1po?feature=shared | done |
 | schemas with pydantic | lesson4-pydantic.py | https://youtu.be/3Z03fwH1I7s?feature=shared | done |
-| web access | lesson5.py | https://youtu.be/krsfRZcGleI?feature=shared | in progress |
+| web access | lesson5.py | https://youtu.be/krsfRZcGleI?feature=shared | done |
 | file search | lesson6.py | NA | obsolete |
 | file search | lesson7.py | https://youtu.be/K9B61x0qWeE?feature=shared | open |
 | add custom tools | lesson8.py | https://youtu.be/3eU9kA-qfmg?feature=shared | open |
