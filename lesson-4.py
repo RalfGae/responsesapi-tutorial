@@ -1,53 +1,62 @@
 from openai import OpenAI
+import base64
+
 from dotenv import load_dotenv
 load_dotenv()
 
 client = OpenAI()
 
-# Expected output:
-# {
-#     "name": "Science fair",
-#     "date": "Friday",
-#     "location": "Science Museum",
-#     "attendees": ["Alice", "Bob"]
-# }
+def encode_image(image_path):
+    with open(image_path, 'rb') as image_file:
+        return base64.b64encode(image_file.read()).decode("utf-8")
+
+base64_image1 = encode_image("./menu.png")
 
 # Structured Output mode
 input_messages = [
     {
         "role":"user",
-        "content": "Alice and Bob are going to a science fair in New York on friday."
+        "content": [
+            {
+                "type": "input_text",
+                "text": "Please extract all menu items"
+            },
+            {
+                "type": "input_image",
+                "image_url": f"data:image/jpeg;base64,{base64_image1}"
+            },
+        ]
     }
 ]
 
 response = client.responses.create(
     model="gpt-4o-mini",
-    instructions="Extract the event information.",
     input=input_messages,
     text={
         "format": {
             "type": "json_schema",
-            "name": "calendar_event",
+            "name": "menu_items",
             "schema": {
                 "type": "object",
                 "properties": {
-                    "name": {
-                        "type": "string"
-                    },
-                    "date": {
-                        "type": "string"
-                    },
-                    "location": {
-                        "type": "string"
-                    },
-                    "attendees": {
+                    "menu_items": {
                         "type": "array",
                         "items": {
-                            "type": "string"
+                            "type": "object",
+                            "properties": {
+                                "item_name": {
+                                    "type": "string"
+                                },
+                                "item_price": {
+                                    "type": "number"
+                                }
+                            },
+                            "required": ["item_name", "item_price"],
+                            "additionalProperties": False
                         }
                     }
                 },
-                "required": ["name", "date", "location", "attendees"],
+                "required": ["menu_items"],
                 "additionalProperties": False
             },
             "strict": True
