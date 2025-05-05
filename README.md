@@ -20,6 +20,7 @@ prerequisites:
 * .env file at root level with following variable(s) defined in it.
     ```
     OPENAI_API_KEY="<YourApiKey>"
+    OPENAI_VECTOR_STORE_ID=[<YourVectorStoreId>]
 How to execute the (first) lessons:
 * navigate go to the root folder of the repository
 * 

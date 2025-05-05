@@ -2,6 +2,9 @@ from openai import OpenAI
 from dotenv import load_dotenv
 load_dotenv()
 
+import os
+vector_store_id = os.getenv("OPENAI_VECTOR_STORE_ID")
+
 client = OpenAI()
 
 input_messages = [
@@ -14,7 +17,7 @@ input_messages = [
 tools = [
     {
         "type": "file_search",
-        "vector_store_ids": ["vs_6817074e5e5481919a7a097fd40d07ee"],
+        "vector_store_ids": [vector_store_id],
         "max_num_results": 2
     }
 ]
