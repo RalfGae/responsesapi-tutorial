@@ -7,14 +7,45 @@ client = OpenAI()
 input_messages = [
     {
         "role":"user",
-        "content":"Hey!"
+        "content":"What are the current specials?"
+    }
+]
+
+tools = [
+    {
+        "type": "file_search",
+        "vector_store_ids": ["vs_6817074e5e5481919a7a097fd40d07ee"],
+        "max_num_results": 2
     }
 ]
 
 response = client.responses.create(
     model="gpt-4o-mini",
-    instructions="RYou are a helpful assistant.",
+    instructions="You are a helpful assistant.",
     input=input_messages, # pass several messages at once
+    tools=tools,
+    include=["file_search_call.results"]
 )
 
-print(response.output_text)
+print("Agent Answer: ", response.output_text)
+
+for output_item in response.output:
+
+    if output_item.type == "file_search_call":
+        print("Search Results:")
+        for i, result in enumerate(output_item.results, 1):
+            print(f"Results {i}")
+            print(f"Filename: {result.filename}")
+            print(f"Score: {result.score}")
+            print(f"Text snippet: {result.text[:150]}..." if len(result.text) > 150 else f"Text snippet: {result.text}")
+
+    if output_item.type == "message":
+        for content_item in output_item.content:
+            if content_item.type == "output_text":
+                print("Annotation: ")
+                for annotation in content_item.annotations:
+                    if annotation.type == "file_citation":
+                        print(f" - Citation from File: {annotation.filename}")
+
+
+# print(response.model_dump_json(indent=4))

@@ -11,7 +11,7 @@ content:
 | schemas with pydantic | lesson4-pydantic.py | https://youtu.be/3Z03fwH1I7s?feature=shared | done |
 | web access | lesson5.py | https://youtu.be/krsfRZcGleI?feature=shared | done |
 | file search | lesson6.py | NA | obsolete |
-| file search | lesson7.py | https://youtu.be/K9B61x0qWeE?feature=shared | in progress |
+| file search | lesson7.py | https://youtu.be/K9B61x0qWeE?feature=shared | done |
 | add custom tools | lesson8.py | https://youtu.be/3eU9kA-qfmg?feature=shared | open |
 | computer use | lesson9.py | https://youtu.be/Tm1_KHdh_kA?feature=shared | open |
 
