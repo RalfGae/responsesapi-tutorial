@@ -2,6 +2,8 @@ from openai import OpenAI
 from dotenv import load_dotenv
 load_dotenv()
 
+import requests
+
 from pydantic import BaseModel, ConfigDict
 import json
 
@@ -18,13 +20,27 @@ def get_todo_list():
         }
     ]
 
+def get_weather(latitude, longitude):
+    response = requests.get(f"https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&current=temperature_2m,wind_speed_10m&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m")
+    # "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m,wind_speed_10m,relative_humidity_2m&current=temperature_2m,wind_speed_10m"
+    data = response.json()
+
+    return data['current']['temperature_2m']
+
 # Pydantic schema
 class GetTodoListParams(BaseModel):
     model_config = ConfigDict(extra="forbid")
     pass
 
+class GetWeatherParams(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    
+    latitude: float
+    longitude: float
+
 # Generate schemas
 todo_list_schema = GetTodoListParams.model_json_schema()
+weather_schema = GetWeatherParams.model_json_schema()
 
 tools = [
     {
@@ -32,6 +48,13 @@ tools = [
         "name": "get_todo_list",
         "description": "Get the list of todos",
         "parameters": todo_list_schema,
+        "strict": True
+    },
+    {
+        "type": "function",
+        "name": "get_weather",
+        "description": "Get the weather for a given latitude and longitude",
+        "parameters": weather_schema,
         "strict": True
     }
 ]
@@ -41,7 +64,7 @@ client = OpenAI()
 input_messages = [
     {
         "role":"user",
-        "content":"What are my todos?"
+        "content":"What is the current weather in Cape Town?"
     }
 ]
 
@@ -70,6 +93,9 @@ while True:
 
         if function_name == "get_todo_list":
             tool_result = get_todo_list()
+
+        if function_name == "get_weather":
+            tool_result = get_weather(args["latitude"], args["longitude"])
     
         input_messages.append(response_output)
         input_messages.append({
