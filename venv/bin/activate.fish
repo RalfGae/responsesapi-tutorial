@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV /home/rglinux/.git/responseapi-tutorial/venv
+set -gx VIRTUAL_ENV /home/rglinux/prj/responsesapi-tutorial/venv
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/"bin $PATH
