@@ -3,7 +3,7 @@
 content:
 
 | lesson | file | following turorial | status |
-|-----------------|-----------------|-----------------|
+|-----------------|-----------------|-----------------|-----------------|
 | intro and setup | lesson1.py | https://youtu.be/wBuULAoJxok?feature=shared | done |
 | analyze images | lesson2.py | https://youtu.be/XKp2YrJJhn0?feature=shared | done |
 | chat history | lesson3.py | https://youtu.be/1P5Yccy1rRk?feature=shared | done |
