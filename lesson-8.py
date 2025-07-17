@@ -64,13 +64,14 @@ client = OpenAI()
 input_messages = [
     {
         "role":"user",
-        "content":"What is the current weather in Cape Town?"
+        "content":"What is the current weather in Cape Town? Also what are my todos?"
     }
 ]
 
 while True:
     response = client.responses.create(
         model="gpt-4o-mini",
+        instructions= "separate the tasks and do them one by one.", # added to avouid multiple tool function call
         input=input_messages,
         tools=tools
     )
@@ -91,12 +92,12 @@ while True:
 
         tool_result = ""
 
-        if function_name == "get_todo_list":
-            tool_result = get_todo_list()
-
         if function_name == "get_weather":
             tool_result = get_weather(args["latitude"], args["longitude"])
     
+        if function_name == "get_todo_list":
+            tool_result = get_todo_list()
+
         input_messages.append(response_output)
         input_messages.append({
             "type": "function_call_output",

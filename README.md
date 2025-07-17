@@ -14,7 +14,7 @@ This repository contains a series of tutorial lessons based on YouTube videos th
 | Web Access            | lesson5.py          | https://youtu.be/krsfRZcGleI?feature=shared | ✅ Done           |
 | File Search (old)     | lesson6.py          | N/A                                         | ❌ Obsolete       |
 | File Search (new)     | lesson7.py          | https://youtu.be/K9B61x0qWeE?feature=shared | ✅ Done           |
-| Custom Tools          | lesson8.py          | https://youtu.be/3eU9kA-qfmg?feature=shared | 🔧 In progress    |
+| Custom Tools          | lesson8.py          | https://youtu.be/3eU9kA-qfmg?feature=shared | ✅ Done           |
 | Computer Use          | lesson9.py          | https://youtu.be/Tm1_KHdh_kA?feature=shared | ⏳ Open           |
 
 ---
