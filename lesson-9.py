@@ -11,23 +11,24 @@ input_messages = [
 ]
 
 # Tools
-tools = []
+tools = [{
+    "type": "computer_use_preview",
+    "display_width": 1920,
+    "display_height": 1200,
+    "environment": "browser"
+}]
 
 # OpenAI client initialization
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-4o-mini",
+    model="computer-use-preview",
     input=input_messages,
-    tools=tools
+    tools=tools,
+    reasoning={
+        "generate_summary": "concise",
+    },
+    truncation="auto"
 )
 
 print(response.output_text)
-
-# With Streaming (optional)
-# full_response = ""
-# for event in response:
-#     if event.type == "response.output_text.delta":
-#         print(event.delta, end="", flush=True)
-#         full_response += event.delta
-# print("\n\nFull Response: ", full_response)
