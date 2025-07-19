@@ -1,0 +1,17 @@
+{
+    "github.copilot.chat.agent.terminal.allowlist": [
+        "bash setup.sh",
+        "ls",
+        "python3 lesson-1.py",
+        "python3 lesson-2.py",
+        "python3 lesson-3.py",
+        "python3 lesson-4.py",
+        "python3 lesson-4-pydantic.py",
+        "python3 lesson-5.py",
+        "python3 lesson-7.py",
+        "python3 lesson-8.py",
+        "python3 lesson-9.py"
+    ],
+    "github.copilot.chat.agent.terminal.allowlistEnabled": true,
+    "github.copilot.chat.agent.terminal.enabled": true
+}
