@@ -15,7 +15,8 @@ This repository contains a series of tutorial lessons based on YouTube videos th
 | File Search (old)     | lesson6.py          | N/A                                         | ❌ Obsolete       |
 | File Search (new)     | lesson7.py          | https://youtu.be/K9B61x0qWeE?feature=shared | ✅ Done           |
 | Custom Tools          | lesson8.py          | https://youtu.be/3eU9kA-qfmg?feature=shared | ✅ Done           |
-| Computer Use          | lesson9.py          | https://youtu.be/Tm1_KHdh_kA?feature=shared | 🔧 In progress    |
+| Computer Use          | lesson9.py          | https://youtu.be/Tm1_KHdh_kA?feature=shared | ❗ Workaround     |
+> **Note:** Direct computer use via OpenAI API is not available. Lesson 9 demonstrates a workaround approach for this limitation.
 
 ---
 
